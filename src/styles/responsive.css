@@ -1,0 +1,800 @@
+/* =====================================================================
+   Responsive layer – the desktop design (global.css) is untouched.
+   >1100px  desktop      769–1100px  tablet      ≤768px  phone (390px Figma design)
+   ===================================================================== */
+
+/* things that only exist on small screens */
+.header--mobile,
+.collection-bar,
+.mbar,
+.logo-m,
+.home-hero__bg--m,
+.hero__img-m {
+  display: none;
+}
+.filter-sheet,
+.filter-sheet__body,
+.filter-sheet__panel {
+  display: contents;
+}
+.filter-sheet__close {
+  display: none;
+}
+
+/* header never gets cramped on laptop widths: the search bar gives up space first */
+.header--desktop {
+  gap: 16px;
+}
+.header--desktop .header__group {
+  flex-shrink: 0;
+}
+.header--desktop .logo {
+  flex-shrink: 0;
+}
+.search {
+  flex: 0 1 465px;
+  min-width: 0;
+}
+.search__field input {
+  min-width: 0;
+}
+.feature__left {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 721px;
+}
+.feature__right {
+  flex: 0 1 579px;
+  min-width: 0;
+}
+
+/* ---------- tablet & small laptop ---------- */
+@media (max-width: 1100px) {
+  .header {
+    padding: 16px 40px;
+  }
+  .search {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+    margin: 0 24px;
+  }
+  .home-hero {
+    padding: 0 24px 18px;
+  }
+  .home-hero__text {
+    width: 100%;
+    padding: 0 40px;
+  }
+  .home-section {
+    padding: 40px 40px;
+  }
+  .section-heading p {
+    width: 100%;
+  }
+  .section-heading h2,
+  .browse__top h2 {
+    font-size: 40px;
+    white-space: normal;
+    text-align: center;
+  }
+  .feature {
+    flex-direction: column;
+    align-items: center;
+  }
+  .feature__left,
+  .feature__right {
+    flex: none;
+    width: 100%;
+    max-width: 721px;
+  }
+  .strip-wrap {
+    margin: 0 -40px;
+  }
+  .browse {
+    padding: 40px;
+  }
+  .browse__top {
+    width: 100%;
+    max-width: 675px;
+  }
+  .browse__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .content {
+    padding: 32px 40px 60px;
+  }
+  .hero__text {
+    left: 40px;
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sidebar {
+    width: 200px;
+  }
+  .pd {
+    padding: 0 40px 40px;
+  }
+  .pd__row {
+    gap: 48px;
+  }
+  .gallery {
+    width: 420px;
+  }
+  .gallery__bg {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .footer {
+    padding: 32px 40px;
+  }
+}
+
+/* ---------- header switches to the hamburger version ---------- */
+@media (max-width: 960px) {
+  .header--desktop {
+    display: none;
+  }
+  .header--mobile {
+    display: flex;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px 8px;
+    background: #fff;
+  }
+  .header--mobile .header__group {
+    gap: 12px;
+  }
+  .logo-m {
+    display: block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+}
+
+/* ---------- narrow tablet ---------- */
+@media (max-width: 900px) {
+  .pd__row {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .gallery {
+    width: 100%;
+    max-width: 561px;
+  }
+  .info {
+    width: 100%;
+  }
+  .grid,
+  .browse__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .related__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .related h2 {
+    font-size: 28px;
+  }
+}
+
+/* ---------- phones ---------- */
+@media (max-width: 768px) {
+  .header--mobile {
+    padding: 16px 16px 8px;
+  }
+
+  /* shared product card (matches the 390px design) */
+  .card,
+  .card.card--lg {
+    border-width: 1.5px;
+    border-radius: 14px;
+    padding: 2px 2px 6px;
+    gap: 7px;
+  }
+  .card .card__media,
+  .card.card--lg .card__media {
+    height: 152px;
+    border-radius: 12px;
+  }
+  .card .card__media:not(.card__media--plain) {
+    background: linear-gradient(to right, #c3d0e1, #d7e6f8);
+  }
+  .card .card__imgbox {
+    transform: scale(0.667);
+    transform-origin: top center;
+  }
+  .card .card__body {
+    gap: 8px;
+  }
+  .card .card__text,
+  .card.card--lg .card__text {
+    padding: 0 8px;
+    gap: 2px;
+  }
+  .card .card__text h3,
+  .card.card--lg .card__text h3 {
+    font-size: 14px;
+  }
+  .card .card__text p,
+  .card.card--lg .card__text p {
+    font-size: 12px;
+  }
+  .card .card__footer,
+  .card.card--lg .card__footer {
+    padding: 0 8px;
+  }
+  .card .pill--price,
+  .card.card--lg .pill--price {
+    padding: 6px 20px;
+    font-size: 14px;
+  }
+  .card .icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+  .card .icon-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+  .related__grid .card__text p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+  }
+  .grid .card__text p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ===== Home (390px Figma frame 2859:1421) =====
+     Sections are stacked with a 20px gap. Cards / images sit 16px from the screen edge,
+     headings and the category pills sit 20px from it. */
+  .home-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+  .home-hero {
+    padding: 8px 16px 0;
+  }
+  .home-hero__card {
+    height: 637px;
+    border-radius: 16px;
+    padding-top: 70px;
+    gap: 365px;
+  }
+  .home-hero__bg--d {
+    display: none;
+  }
+  .home-hero__bg--m {
+    display: block;
+    border-radius: 16px;
+  }
+  .home-hero__text {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .home-hero__text h1 {
+    font-size: 36px;
+  }
+  .home-hero__text p {
+    font-size: 12px;
+    width: 258px;
+    max-width: 100%;
+  }
+
+  .home-section {
+    padding: 0 16px;
+    gap: 8px;
+  }
+  main > .home-section:last-child {
+    padding-bottom: 0;
+  }
+  .section-heading {
+    gap: 4px;
+    padding: 0 4px;
+  }
+  .section-heading h2 {
+    font-size: 16px;
+    letter-spacing: 0;
+    white-space: normal;
+  }
+  .section-heading p {
+    font-size: 12px;
+    color: var(--muted);
+    width: 100%;
+  }
+
+  .feature {
+    gap: 12px;
+    align-items: stretch;
+  }
+  .feature__left,
+  .feature__right {
+    width: 100%;
+    max-width: none;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  .feature__photo {
+    aspect-ratio: 681 / 377;
+  }
+  .feature__photo img {
+    height: 124.67%;
+    top: -3.85%;
+  }
+  .feature__caption {
+    width: 100%;
+  }
+  .feature__title {
+    font-size: 16px;
+    line-height: normal;
+  }
+  .feature__sub {
+    font-size: 12px;
+  }
+  .feature__right {
+    gap: 24px;
+  }
+  .feature__head {
+    width: 200px;
+    max-width: 100%;
+    gap: 3px;
+  }
+  .feature__head-title {
+    font-size: 16px;
+    line-height: normal;
+  }
+  .feature__head-sub {
+    font-size: 12px;
+  }
+  /* stacked cards: 318 x 190 box, each card is white, 20px radius, photo = card height x 313/282 */
+  .stack--phone {
+    height: 190px;
+  }
+  .stack--phone .stack__card {
+    gap: 8px;
+    padding-right: 16px;
+    border-radius: 20px;
+  }
+  .stack--phone .stack__img {
+    height: 100%;
+    aspect-ratio: 313 / 282;
+    border-width: 2px;
+    border-radius: 20px;
+  }
+  .stack--phone .stack__card:last-child .stack__img {
+    border-radius: 16px;
+  }
+  .stack--phone .stack__text {
+    height: auto;
+    padding: 16px 0;
+    font-size: 14px;
+  }
+  .stack--phone .stack__year {
+    height: auto;
+    font-size: 16px;
+  }
+
+  /* home product grid */
+  .browse {
+    padding: 0;
+    gap: 12px;
+  }
+  .browse__top {
+    padding: 0 20px;
+    gap: 4px;
+    max-width: none;
+    width: 100%;
+  }
+  .browse__top h2 {
+    font-size: 16px;
+    letter-spacing: 0;
+    white-space: normal;
+  }
+  .cat-pills {
+    gap: 8px;
+    height: 32px;
+  }
+  .cat-pill {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 3px 10px;
+    font-size: 14px;
+  }
+  .browse__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+    padding: 0 16px;
+    margin: 0;
+    align-items: stretch;
+  }
+  .browse__cell {
+    display: flex;
+  }
+  .browse__cell .card {
+    flex: 1;
+  }
+  .browse__cell:nth-child(n + 7) {
+    display: none;
+  }
+  .browse__grid .card .card__text {
+    gap: 0;
+  }
+  .browse__grid .card .card__footer {
+    height: 28px;
+  }
+  .browse__grid .card .pill--price {
+    height: 28px;
+    padding: 0 13px;
+  }
+  .browse__grid .card__actions {
+    gap: 8px;
+  }
+  /* the heart is part of the 390px home card (other phone cards keep only the bag button) */
+  .browse__grid .card__actions .icon-btn:not(:last-child) {
+    display: flex;
+  }
+  /* IconButton sets its size inline (32px), so the 28px Figma size needs !important */
+  .browse__grid .card .icon-btn {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .btn-dark {
+    width: auto;
+    padding: 3px 24px;
+    font-size: 14px;
+  }
+  .browse .btn-dark {
+    height: 36px;
+    padding: 3px 28px;
+    font-size: 12px;
+  }
+
+  .card__actions .icon-btn:not(:last-child) {
+    display: none; /* no heart button on the other phone cards */
+  }
+
+  .strip-wrap {
+    margin: 0 -16px;
+  }
+  .strip__item {
+    width: 103px;
+    height: 138px;
+    border-radius: 12px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 108px;
+    padding: 32px 20px;
+    gap: 0;
+  }
+
+  /* ===== Collection ===== */
+  .hero {
+    height: 120px;
+  }
+  /* image fills the right ~45% of the banner and scales with the screen width */
+  .hero__img {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+  }
+  .hero__img-d {
+    display: none;
+  }
+  .hero__img-m {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .hero__text {
+    left: 16px;
+    max-width: 52%;
+  }
+  .hero h1 {
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+  .hero p {
+    font-size: 12px;
+  }
+
+  .content {
+    padding: 16px 16px 80px;
+    gap: 8px;
+  }
+  .breadcrumb {
+    display: none;
+  }
+  .collection-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .collection-bar p {
+    font-size: 16px;
+  }
+  .content__row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .results {
+    width: 100%;
+    gap: 8px;
+  }
+  .toolbar {
+    display: none;
+  }
+  .grid {
+    gap: 8px;
+  }
+
+  /* filters become a bottom sheet (no phone design was given – styled like the login sheet) */
+  .filter-sheet {
+    display: none;
+  }
+  .filter-sheet.is-open {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(17, 17, 17, 0.55);
+    align-items: flex-end;
+  }
+  .filter-sheet__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    width: 100%;
+    max-height: 90vh;
+  }
+  .filter-sheet__close {
+    display: block;
+    margin: 0 0 12px auto;
+    padding: 8px 24px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 35px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .filter-sheet__panel {
+    display: block;
+    width: 100%;
+    background: #fff;
+    border-radius: 30px 30px 0 0;
+    padding: 28px 20px 32px;
+    overflow-y: auto;
+    animation: sheet-up 0.35s cubic-bezier(0.22, 0.8, 0.3, 1);
+  }
+  .filter-sheet .sidebar {
+    position: static;
+    width: 100%;
+  }
+
+  /* ===== Product details ===== */
+  .pd {
+    padding: 0 16px;
+    margin: 16px 0 40px;
+    gap: 0;
+  }
+  .pd .breadcrumb {
+    display: none;
+  }
+  .pd__wrap {
+    gap: 24px;
+  }
+  .pd__row {
+    gap: 24px;
+  }
+  .gallery {
+    width: 100%;
+    max-width: none;
+    gap: 18px;
+  }
+  .gallery__main {
+    height: 350px;
+    border-radius: 12px;
+  }
+  .gallery__bg {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    border-radius: 12px;
+  }
+  .gallery__thumbs {
+    gap: 8px;
+  }
+  .tile--thumb {
+    width: 80px;
+    height: 80px;
+  }
+  .pill--tag {
+    display: none;
+  }
+  .info {
+    gap: 0;
+  }
+  .info__head {
+    gap: 0;
+    margin-bottom: 24px;
+  }
+  .info__title {
+    gap: 2px;
+  }
+  .info__title h1 {
+    font-size: 20px;
+  }
+  .info__price {
+    font-size: 20px;
+  }
+  .info__tax {
+    font-size: 11px;
+  }
+  .info__body {
+    gap: 24px;
+  }
+  .pd-label {
+    font-size: 12px;
+  }
+  .size-row {
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .size-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  .variant-row {
+    gap: 8px;
+  }
+  .tile--variant {
+    width: 76px;
+    height: 76px;
+  }
+  .add-to-cart {
+    padding: 14px 34px;
+  }
+  .pd-title-16 {
+    font-size: 15px;
+  }
+  .info__copy {
+    gap: 14px;
+  }
+  .info__desc,
+  .info__list {
+    font-size: 14px;
+  }
+  .related {
+    gap: 12px;
+  }
+  .related h2 {
+    font-size: 16px;
+  }
+  .related__grid {
+    gap: 8px;
+  }
+
+  /* ===== Login → bottom sheet ===== */
+  .modal {
+    padding: 0;
+    align-items: flex-start;
+  }
+  /* bottom-aligned sheet that still scrolls from the top when it is taller than the screen (create account) */
+  .modal__dialog {
+    margin: auto 0 0;
+    max-width: none;
+    gap: 12px;
+  }
+  .login {
+    border-radius: 30px 30px 0 0;
+    padding: 56px 20px 48px;
+    animation: sheet-up 0.35s cubic-bezier(0.22, 0.8, 0.3, 1);
+  }
+  .login__close {
+    top: 16px;
+    right: 20px;
+  }
+  .login__inner {
+    display: block;
+  }
+  .login__image {
+    display: none;
+  }
+  .login__top {
+    gap: 16px;
+  }
+  .login__top--register {
+    gap: 24px;
+  }
+  .login__fields {
+    gap: 16px;
+  }
+  .login__head {
+    gap: 32px;
+  }
+  .login__intro h1 {
+    font-size: 36px;
+    letter-spacing: -2px;
+  }
+  .field input {
+    padding: 8px 10px;
+  }
+  .login__btn--outline {
+    height: 40px;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .login,
+  .filter-sheet__panel {
+    animation: none;
+  }
+}
+
+/* ---------- search on small screens ---------- */
+@media (max-width: 960px) {
+  .mobile-search {
+    position: absolute;
+    z-index: 60;
+    left: 16px;
+    right: 16px;
+    top: calc(100% - 4px);
+  }
+  .search--mobile {
+    width: 100%;
+    margin: 0;
+    height: 40px;
+    flex: none;
+    padding: 0 20px;
+    background: #f6f6f6;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+}
+@media (min-width: 769px) and (max-width: 960px) {
+  .mobile-search {
+    left: 40px;
+    right: 40px;
+  }
+}
+
+/* footer stays at the bottom of the window on short pages (e.g. "no items found") */
+.page > main {
+  flex: 1 0 auto;
+}

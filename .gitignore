@@ -1,0 +1,20 @@
+# dependencies & build output
+node_modules
+dist
+.vite
+
+# secrets and local databases (also ignored inside backend/)
+.env
+.env.local
+*.db
+*.db-shm
+*.db-wal
+
+# python (FastAPI backend)
+__pycache__
+.venv
+
+# editor / OS
+.DS_Store
+.vscode
+*.log

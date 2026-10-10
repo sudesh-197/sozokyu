@@ -1,0 +1,656 @@
+.co {
+  --co-red: #b51513;
+  --co-grey: #7b7b7b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: #111;
+  font-family: "Familjen Grotesk", sans-serif;
+  font-weight: 400;
+}
+.co *,
+.co *::before,
+.co *::after {
+  box-sizing: border-box;
+}
+.co h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  color: #000;
+}
+.co p {
+  margin: 0;
+}
+.co button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* top bar */
+.co-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1330px;
+  max-width: 1400px; /* same width as .co-main */
+  margin: 0 auto; /* centers the header content */
+  padding: 16px 90px; /* same side padding as .co-main */
+  box-sizing: border-box;
+  background: #fdfdfd;
+}
+.co-logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+}
+a.co-logo {
+  text-decoration: none;
+}
+.co-cartbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 11px;
+  border-radius: 40px;
+  border: 1px solid #f6f6f6;
+  background: #fff;
+}
+
+/* two columns */
+.co-main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center; /* centers form + order summary horizontally */
+  gap: 140px;
+  padding: 40px 90px;
+  width: 100%;
+  max-width: 1400px; /* keeps it from spreading too wide on big screens */
+  margin: 0 auto; /* centers the whole block on the page */
+  box-sizing: border-box;
+}
+.co-form {
+  position: sticky;
+  top: 0;
+  width: 500px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  background: #fff;
+}
+.co-summary {
+  width: 500px;
+  flex: none;
+  align-self: flex-start; /* don't stretch to full page height */
+  position: sticky; /* stays at the top while you scroll the form */
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* items start at the top */
+  gap: 32px;
+}
+
+/* form sections + underline inputs */
+.co-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.co-sechead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.co-link {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 20px;
+  line-height: normal;
+  color: var(--co-red);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+.co-row {
+  display: flex;
+  gap: 16px;
+}
+.co-row > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.co-input {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-bottom: 1px solid var(--co-grey);
+  border-radius: 0;
+  background: transparent;
+  outline: none;
+  font: inherit;
+  font-size: 15px;
+  line-height: normal;
+  color: #111;
+}
+.co-input::placeholder {
+  color: var(--co-grey);
+  opacity: 1;
+}
+.co-input:focus {
+  border-bottom-color: #111;
+}
+
+.co-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+}
+.co-select select {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 26px 10px 10px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  font: inherit;
+  font-size: 15px;
+  color: #111;
+  cursor: pointer;
+}
+.co-chev {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+}
+
+.co-note {
+  padding: 10px;
+  border-radius: 8px;
+  background: #eaf0f7;
+  font-size: 15px;
+  line-height: normal;
+  color: var(--co-grey);
+}
+
+/* payment */
+.co-paytitle {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.co-paytitle p {
+  font-size: 14px;
+  line-height: normal;
+  color: var(--co-grey);
+}
+.co-paybox {
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.co-payrow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+.co-payrow--top {
+  align-items: flex-start;
+  padding: 14px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+}
+.co-payrow input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.co-radio {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  border: 1px solid #dedede;
+  background: #fff;
+}
+.co-payrow input:checked + .co-radio {
+  border: 5px solid #111;
+}
+.co-payrow input:focus-visible + .co-radio {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+.co-paytext {
+  font-size: 14px;
+  line-height: 18.9px;
+  letter-spacing: -0.1504px;
+  color: #000;
+}
+.co-payrow--top .co-paytext {
+  width: 279px;
+}
+
+.co-cards {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  height: 24px;
+}
+.co-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 24px;
+  border-radius: 3px;
+  font-weight: 700;
+  line-height: 1;
+}
+.co-card--upi {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  color: #444;
+  font-size: 11px;
+  font-style: italic;
+}
+.co-card--upi i {
+  color: #e8731a;
+  font-style: normal;
+  font-size: 9px;
+  margin-left: 1px;
+}
+.co-card--visa {
+  background: #1434cb;
+  color: #fff;
+  font-size: 11px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+.co-card--mc {
+  background: #111;
+  gap: 0;
+}
+.co-card--mc b {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #eb001b;
+}
+.co-card--mc b + b {
+  margin-left: -5px;
+  background: #f79e1b;
+  opacity: 0.95;
+}
+.co-card--more {
+  width: 27px;
+  padding: 0 4px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  font-family: "ABeeZee", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.1172px;
+  color: #27253e;
+}
+
+.co-pay {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 0;
+  border-radius: 30px;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  line-height: normal;
+}
+
+/* order summary */
+.co-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 110px;
+  padding: 12px 12px 12px 0;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: #fff;
+}
+.co-item__img {
+  flex: none;
+  width: 152px;
+  height: 110px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to right, #c3d0e1, #d7e6f8);
+}
+.co-item__img img {
+  width: 146px;
+  height: 219px;
+  flex: none;
+  object-fit: cover;
+}
+.co-item__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.co-item__txt {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.co-item__sku,
+.co-item__name,
+.co-item__price {
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.36px;
+  text-transform: capitalize;
+}
+.co-item__sku {
+  color: #999;
+}
+.co-item__name {
+  color: #111;
+}
+.co-item__price {
+  font-size: 20px;
+  color: #111;
+}
+.co-item__price small {
+  font-size: 14px;
+  color: rgba(17, 17, 17, 0.54);
+}
+
+.co-discount {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid var(--co-grey);
+}
+.co-discount__in {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  color: #111;
+}
+.co-discount__in::placeholder {
+  color: var(--co-grey);
+  opacity: 1;
+}
+.co-apply {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 20px;
+  line-height: normal;
+  color: var(--co-red);
+}
+
+.co-lines {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  letter-spacing: 0.36px;
+  line-height: 16px;
+}
+.co-lines > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #111;
+}
+.co-lines dt,
+.co-lines dd {
+  margin: 0;
+}
+.co-lines__muted {
+  font-size: 14px;
+  color: var(--co-grey);
+}
+
+.co-total {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  letter-spacing: 0.36px;
+  line-height: 16px;
+}
+.co-total__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+}
+.co-total p {
+  font-size: 14px;
+  color: var(--co-grey);
+}
+
+/* footer */
+.co-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 80px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+.co-foot__r {
+  letter-spacing: 0.8px;
+  text-align: right;
+}
+
+/* the Figma frame is desktop only - these just keep it usable on smaller screens */
+@media (max-width: 1240px) {
+  .co-top {
+    padding: 16px 40px;
+  }
+  .co-main {
+    gap: 60px;
+    padding: 40px;
+  }
+  .co-form,
+  .co-summary {
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .co-payrow--top .co-paytext {
+    width: auto;
+  }
+}
+@media (max-width: 860px) {
+  .co-main {
+    flex-direction: column;
+  }
+  .co-form,
+  .co-summary {
+    width: 100%;
+    position: static;
+  }
+  .co-foot {
+    flex-direction: column;
+  }
+}
+/* ==========================================================================
+   MOBILE CHECKOUT  (Figma 390px frame)
+   ========================================================================== */
+
+/* the "Order summary" toggle only exists on phones */
+.co-sumhead {
+  display: none;
+}
+/* wraps the order-summary content (same look as before on desktop) */
+.co-sumbody {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.co-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* space between two products - change this number */
+}
+
+@media (max-width: 860px) {
+  /* header: logo + basket */
+  .co-top {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 50px 16px 8px;
+    background: #fff;
+  }
+  .co-logo {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+
+  /* page: grey order-summary box on top, white form below */
+  .co-main {
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  /* order summary box */
+  .co-summary {
+    order: -1;
+    align-self: stretch;
+    width: 100%;
+    position: static;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 8px;
+    background: #eaf0f7;
+  }
+  .co-summary.is-closed .co-sumbody {
+    display: none;
+  }
+  .co-sumhead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #111;
+    text-align: left;
+  }
+  .co-sumhead__l {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    font-size: 15px;
+    line-height: normal;
+  }
+  .co-sumhead__total {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .co-item {
+    background: transparent;
+  }
+
+  /* form */
+  .co-form {
+    width: 100%;
+    position: static;
+    gap: 34px;
+    padding: 24px 16px;
+  }
+  .co-link {
+    font-size: 16px;
+  }
+  .co-sec--delivery .co-input,
+  .co-sec--delivery .co-select select {
+    font-size: 14px;
+  }
+  .co-row {
+    flex-wrap: nowrap;
+  }
+  .co-pay {
+    margin-top: -10px; /* 24px gap to the button in the design */
+  }
+
+  /* payment: text on the left (3 lines), card logos on the right */
+  .co-payrow--top {
+    flex-wrap: nowrap;
+  }
+  .co-payrow--top .co-paytext {
+    flex: none;
+    width: 146px;
+  }
+  .co-cards {
+    flex: none;
+    margin-left: -12px;
+    margin-top: -1px;
+  }
+
+  /* footer */
+  .co-foot {
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 108px;
+    padding: 32px 20px;
+    text-align: left;
+    gap: 0;
+  }
+  .co-foot__r {
+    text-align: left;
+  }
+}
+/* info note: icon in front of the text */
+.co-note--info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.co-note__icon {
+  flex-shrink: 0;
+  color: var(--co-grey);
+}
+
+/* smaller "Change" / "Saved addresses" button in Delivery */
+.co-link.co-link--sm {
+  font-size: 14px;
+}

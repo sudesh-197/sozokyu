@@ -1,0 +1,407 @@
+@media (max-width: 768px) {
+  :root {
+    /* Figma has 50px above the logo = iPhone status bar of the mock-up. Keep 16px for the real site. */
+    --m-header-top: 16px;
+  }
+  .header--mobile {
+    padding: var(--m-header-top) 16px 8px;
+  }
+  /* Color & Price are in the floating bar on phones, so the Filter sheet doesn't repeat them */
+  .filter-sheet .filter-group--on-bar {
+    display: none;
+  }
+
+  /* banner */
+  .hero {
+    height: 80px;
+  }
+  .hero__img {
+    top: 17px;
+    bottom: auto;
+    right: 0;
+    width: 83px;
+    height: 63px;
+    overflow: hidden;
+  }
+  .hero__img .hero__img-m {
+    position: absolute;
+    inset: auto;
+    max-width: none;
+    object-fit: fill;
+    width: 517.4%;
+    height: 253.33%;
+    left: -381%;
+    top: -0.05%;
+  }
+  .hero__text {
+    left: 20px;
+    top: calc(50% - 0.5px);
+    width: 282px;
+    max-width: calc(100% - 100px);
+    gap: 4px;
+  }
+  .hero h1 {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+  }
+  .hero h1 .hero__of {
+    text-transform: none;
+  }
+  .hero p {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* "All Products" heading + product grid (Figma 3190:1622): heading 20px at x=20, 12px gap, 8px between rows */
+  .content {
+    padding: 16px 16px 24px;
+    gap: 12px;
+  }
+  .collection-bar {
+    display: block;
+    padding: 0 4px;
+  }
+  .collection-bar h2 {
+    margin: 0;
+    font-family: var(--font);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--ink);
+  }
+
+  /* cards (Figma 3448:436): 171px-wide card, 152px photo, 15px title, 12px #999 copy, 32px round buttons */
+  .grid {
+    gap: 8px;
+  }
+  .grid .card {
+    padding: 2px 2px 8px;
+    border-color: var(--line);
+  }
+  .grid .card .card__text {
+    gap: 2px;
+  }
+  .grid .card .card__text h3 {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .grid .card .card__text p {
+    font-size: 12px;
+    line-height: normal;
+    color: #999;
+  }
+  .grid .card .card__footer {
+    height: 32px;
+  }
+  .grid .card .pill--price {
+    height: 32px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    border-color: var(--line);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .grid .card .card__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .grid .card .card__actions .icon-btn:not(:last-child) {
+    display: flex;
+  }
+  .grid .card .icon-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .grid .card .icon-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  .card .card__imgbox.card__imgbox--m {
+    transform: none;
+  }
+
+  /* ===== floating Sort / Color / Price / Filter bar (Figma 2981:1814, open state 3448:831) ===== */
+  /* .mbar only keeps the 50px of space in the page; .mbar__float is the bar itself, fixed to the screen */
+  .mbar {
+    display: block;
+    height: 50px;
+    margin-top: 20px; /* + the 12px content gap = the 32px of the design */
+  }
+  .mbar__float {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: calc(
+      16px + env(safe-area-inset-bottom, 0px)
+    ); /* always pinned, never lifted */
+    z-index: 40;
+    border-radius: 34px;
+  }
+  /* open: the options and the bar sit together in one white 24px card */
+  .mbar__float.is-open {
+    border-radius: 24px;
+    filter: drop-shadow(
+      0 8px 12px rgba(0, 0, 0, 0.12)
+    ); /* follows the card while it grows */
+  }
+  /* the white card is drawn here so it can grow upward in sync with the options */
+  .mbar__float.is-open::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: #fff;
+    border-radius: 24px;
+    animation: mbar-bg-up 0.2s ease-out; /* same time as .mbar__panel's sheet-up */
+  }
+  @keyframes mbar-bg-up {
+    from {
+      clip-path: inset(
+        calc(100% - 50px) 0 0 0 round 24px
+      ); /* starts as just the 50px bar */
+    }
+    to {
+      clip-path: inset(0 0 0 0 round 24px);
+    }
+  }
+  .mbar__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 5px 20px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 34px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  }
+  .mbar__float.is-open .mbar__bar {
+    box-shadow: none;
+  }
+  .mbar__btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    background: none;
+    border: 0;
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: normal;
+    color: #000;
+    cursor: pointer;
+  }
+  /* the tab that has a choice applied, or whose card is open, turns red */
+  .mbar__btn.is-active,
+  .mbar__btn.is-open {
+    color: var(--sozoq-color, #b51513);
+  }
+  .mbar__btn.is-active svg,
+  .mbar__btn.is-open svg {
+    stroke: var(--sozoq-color, #b51513);
+  }
+  .mbar__divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .mbar__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 20px 16px;
+    animation: sheet-up 0.2s ease-out;
+  }
+  .mbar__title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--ink);
+  }
+  .mbar__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .mbar__list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: normal;
+    color: #444;
+    cursor: pointer;
+  }
+  .mbar__list li.is-selected {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .mbar__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .mbar__chip {
+    padding: 6px 14px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 35px;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .mbar__chip.is-on {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+  .mbar__reset {
+    align-self: flex-end;
+    margin: -8px 0 0;
+    background: none;
+    border: 0;
+    font-family: var(--font);
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* ===== price range slider (black & white) ===== */
+  /* ===== price slider, one handle (black & white) ===== */
+  .mrange {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mrange__values {
+    display: flex;
+    align-items: center;
+  }
+  .mrange__value {
+    padding: 6px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 35px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .mrange__track {
+    position: relative;
+    height: 24px;
+  }
+  /* rail is inset by half a thumb so the black fill lines up with the thumb centre */
+  .mrange__rail {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: 50%;
+    height: 4px;
+    transform: translateY(-50%);
+    background: #e6e6e6;
+    border-radius: 4px;
+  }
+  .mrange__fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--ink);
+    border-radius: 4px;
+  }
+  .mrange__input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .mrange__input::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 24px;
+    background: transparent;
+  }
+  .mrange__input::-moz-range-track {
+    height: 24px;
+    background: transparent;
+  }
+  .mrange__input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 3px solid #fff;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.15),
+      0 2px 6px rgba(0, 0, 0, 0.25);
+  }
+  .mrange__input::-moz-range-thumb {
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 3px solid #fff;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.15),
+      0 2px 6px rgba(0, 0, 0, 0.25);
+  }
+  .mrange__input:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 2px var(--ink);
+  }
+  .mrange__input:focus-visible::-moz-range-thumb {
+    box-shadow: 0 0 0 2px var(--ink);
+  }
+  .mrange__scale {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4px;
+    font-size: 12px;
+    color: #999;
+  }
+
+  /* no footer on phones */
+  .footer {
+    display: none;
+  }
+}
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .mbar__panel,
+  .mbar__float.is-open::before {
+    animation: none;
+  }
+}
+/* ---------- Filter sheet open: keep the floating Sort / Color / Price / Filter bar visible ---------- */
+@media (max-width: 768px) {
+  .mbar__float {
+    z-index: 1001; /* above the filter sheet (z-index 1000) and its dark backdrop */
+  }
+  .filter-sheet__panel {
+    /* the sheet's content ends above the bar instead of hiding behind it (bar = 50px + 16px from the bottom) */
+    padding-bottom: calc(32px + 66px + env(safe-area-inset-bottom, 0px));
+  }
+}

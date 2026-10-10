@@ -1,0 +1,145 @@
+.lbl-m {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .lbl-d {
+    display: none;
+  }
+  .lbl-m {
+    display: inline;
+  }
+
+  .pd {
+    margin: 16px 0 34px;
+  }
+  .pd__wrap {
+    gap: 40px;
+  }
+
+  .info__head {
+    margin-bottom: 16px;
+  }
+  .info__body {
+    gap: 20px;
+  }
+  .info__body > .pd-section:first-child {
+    gap: 10px;
+  }
+  .cta-row {
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .cta-row + .pd-section {
+    margin-top: 4px;
+  }
+
+  .size-row {
+    gap: 8px 14px;
+    flex-wrap: wrap;
+  }
+  .size-btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 12px 10px;
+    font-size: 14px;
+  }
+  .size-btn:not(.is-active) {
+    border-color: var(--line);
+  }
+
+  .add-to-cart {
+    height: 44px;
+    padding: 0 34px;
+  }
+  .wish-btn {
+    width: 44px;
+    height: 44px;
+  }
+  .wish-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .gallery__thumbs .tile img,
+  .variant-row .tile img {
+    inset: auto;
+    left: 50%;
+    top: 0;
+    max-width: none;
+    transform: translateX(-50%);
+  }
+  .gallery__thumbs .tile:nth-child(1) img {
+    width: 110px;
+    height: 165px;
+  }
+  .gallery__thumbs .tile:nth-child(2) img {
+    width: 90px;
+    height: 135px;
+    margin-left: -6px;
+  }
+  .gallery__thumbs .tile:nth-child(3) img {
+    width: 90px;
+    height: 107px;
+    top: 3.5px;
+  }
+  .variant-row .tile:nth-child(1) img {
+    width: 96px;
+    height: 143px;
+  }
+  .variant-row .tile:nth-child(2) img {
+    width: 90px;
+    height: 135px;
+    top: 5px;
+  }
+  .variant-row .tile:nth-child(3) img {
+    width: 84px;
+    height: 126px;
+    top: 8px;
+  }
+
+  .related {
+    gap: 11px;
+  }
+  .related__grid .card .card__text {
+    gap: 0;
+  }
+  .related__grid .card .card__text h3 {
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .related__grid .card .card__text p {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: unset;
+  }
+  .related__grid .card .card__footer {
+    height: 28px;
+  }
+  .related__grid .card .pill--price {
+    height: 28px;
+    padding: 0 14px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .related__grid .card .card__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .related__grid .card .card__actions .icon-btn:not(:last-child) {
+    display: flex;
+  }
+  .related__grid .card .icon-btn {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .related__grid .card .icon-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+}
