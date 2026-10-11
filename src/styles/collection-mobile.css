@@ -385,7 +385,8 @@
   }
 
   /* no footer on phones */
-  .footer {
+  /* no footer on the Collection page on phones (the floating bar sits there); every other page keeps it */
+  .page:has(.mbar) .footer {
     display: none;
   }
 }

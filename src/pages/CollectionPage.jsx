@@ -155,7 +155,9 @@ export default function CollectionPage() {
           onColor={(v) => update({ color: v })}
           price={filters.price}
           onPrice={(v) => update({ price: v })}
+          filtersOpen={filtersOpen}
           onOpenFilters={() => setFiltersOpen(true)}
+          onCloseFilters={() => setFiltersOpen(false)}
         />
       </main>
     </>

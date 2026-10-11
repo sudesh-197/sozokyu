@@ -98,6 +98,7 @@ export default function Header() {
             <SearchBox
               className="search search--mobile"
               autoFocus
+              blur
               onDone={() => setSearchOpen(false)}
             />
           </div>

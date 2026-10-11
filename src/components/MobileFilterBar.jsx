@@ -5,7 +5,8 @@ import { createIcon, CheckIcon } from "./Icons.jsx";
 import useEscapeKey from "../hooks/useEscapeKey.js";
 
 /* 15px line icons used by the bar (Figma: sort-by-down-02, palette, wallet-01, filter-horizontal) */
-const barIcon = (paths) => createIcon(paths, 15, { stroke: "#000", "aria-hidden": true });
+const barIcon = (paths) =>
+  createIcon(paths, 15, { stroke: "#000", "aria-hidden": true });
 const SortIcon = barIcon(
   <>
     <path d="M4 6h10M4 12h7M4 18h4" />
@@ -138,7 +139,7 @@ function PriceSlider({ price, onPrice }) {
  * Phones only. Fixed (sticky) at the bottom of the screen: it never moves while scrolling,
  * including at the end of the product list.
  *   Sort / Color / Price open a card above the bar (they use the same URL options as the sidebar);
- *   Filter opens the full filter sheet.
+ *   Filter opens the full filter sheet. The card and the sheet never show together.
  */
 export default function MobileFilterBar({
   sort,
@@ -147,7 +148,9 @@ export default function MobileFilterBar({
   onColor,
   price,
   onPrice,
+  filtersOpen,
   onOpenFilters,
+  onCloseFilters,
 }) {
   const [open, setOpen] = useState(null); // 'sort' | 'color' | 'price' | null
   const ref = useRef(null);
@@ -177,7 +180,10 @@ export default function MobileFilterBar({
       className={`mbar__btn ${active ? "is-active" : ""} ${open === id ? "is-open" : ""}`}
       aria-haspopup="true"
       aria-expanded={open === id}
-      onClick={() => setOpen(open === id ? null : id)}
+      onClick={() => {
+        onCloseFilters(); // the Filter sheet and these cards never show together
+        setOpen(open === id ? null : id);
+      }}
     >
       {children}
       <span>{label}</span>
@@ -259,10 +265,13 @@ export default function MobileFilterBar({
           <span className="mbar__divider" aria-hidden="true" />
           <button
             type="button"
-            className="mbar__btn"
+            className={`mbar__btn ${filtersOpen ? "is-open" : ""}`}
+            aria-haspopup="true"
+            aria-expanded={filtersOpen}
             onClick={() => {
               setOpen(null);
-              onOpenFilters();
+              if (filtersOpen) onCloseFilters();
+              else onOpenFilters();
             }}
           >
             <FilterHorizontalIcon />

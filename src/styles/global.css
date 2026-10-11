@@ -3762,3 +3762,121 @@ a {
     flex: 0 0 auto; /* don't stretch to the full page height (that pushed the content down) */
   }
 }
+/* ---------- My Orders list on phones / tablets: fill the screen width ---------- */
+@media (max-width: 960px) {
+  .account--orders:has(.orders__titlerow) {
+    align-items: stretch; /* was flex-start: the cards only grew to their content (~360px) */
+  }
+  .account--orders:has(.orders__titlerow) .account__body {
+    width: 100%;
+    min-width: 0;
+  }
+  .orders,
+  .order,
+  .order__body {
+    min-width: 0;
+  }
+}
+/* My Orders on very small phones (360px and below): the 390px design needs a little more room */
+@media (max-width: 360px) {
+  .order-item {
+    height: auto; /* the name may wrap to 3 lines; a fixed 110px clipped the SKU and the price */
+    min-height: 110px;
+  }
+  .order-item__img {
+    width: 110px; /* photo column 152px -> 110px */
+  }
+  .order__foot {
+    gap: 8px;
+  }
+  .order__total {
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+  .order__details {
+    width: auto;
+    padding: 8px 20px;
+  }
+}
+/* ---------- Search suggestions (desktop + phone) ---------- */
+.search {
+  position: relative;
+}
+.search__panel {
+  position: absolute;
+  top: 100%; /* no gap: panel touches the search bar */
+  left: 0;
+  right: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 8px 8px; /* no top padding, so bar + list read as one box */
+  background: inherit; /* always the exact same colour as the search bar */
+  border: 0;
+  border-radius: 0 0 22px 22px;
+  box-shadow: 0 14px 24px -8px rgba(0, 0, 0, 0.18);
+}
+/* while the list is open, the bar and the list join into one shape */
+.search.search--open {
+  border-radius: 22px 22px 0 0;
+  box-shadow: none;
+}
+.search__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  background: none;
+  border: 0;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 16px;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+.search__item:hover,
+.search__item.is-active {
+  background: rgba(0, 0, 0, 0.05);
+}
+.search__item svg {
+  flex: none;
+  opacity: 0.55;
+}
+.search__item span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.search__item b {
+  font-weight: 600; /* the part you typed */
+}
+.search__empty {
+  margin: 0;
+  padding: 12px;
+  font-size: 14px;
+  color: #8a8a8a;
+}
+.search__backdrop {
+  display: none;
+}
+/* phones / small tablets: dim + blur the rest of the screen while searching (like the logout popup) */
+@media (max-width: 960px) {
+  .search__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: -1; /* behind the search bar and its suggestion box */
+    background: rgba(17, 17, 17, 0.55);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+  /* brighter search bar + list on the dimmed page */
+  .search--mobile {
+    background: #fff;
+  }
+}
