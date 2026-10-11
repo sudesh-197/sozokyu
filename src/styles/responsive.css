@@ -783,8 +783,28 @@
     height: 40px;
     flex: none;
     padding: 0 20px;
-    background: #f6f6f6;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    background: #fff; /* CHANGED: was #f6f6f6 (pure white = brighter bar) */
+    border: 1px solid rgba(0, 0, 0, 0.22); /* NEW: stroke around the bar, darker than the toolbar's 0.1 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06); /* CHANGED: was 0 8px 24px rgba(0,0,0,0.08), now softer like the toolbar */
+  }
+
+  /* NEW: while suggestions are open */
+  .search--mobile.search--open {
+    border-radius: 22px; /* NEW: keeps all 4 corners round, so the bottom edge stays curvy */
+    box-shadow: none; /* NEW: the sheet carries the shadow, so there's no double shadow */
+  }
+
+  /* NEW: the suggestion sheet */
+  .search--mobile .search__panel {
+    z-index: -1; /* NEW: puts the sheet BEHIND the white bar so they look attached */
+    top: 50%; /* CHANGED: was 100%, now starts at the middle of the bar */
+    left: -1px; /* NEW: lines up with the bar's outer edge (past its 1px border) */
+    right: -1px; /* NEW: same, right side */
+    padding-top: 26px; /* NEW: moves the first suggestion below the bar's curved bottom */
+    border: 1px solid rgba(0, 0, 0, 0.22); /* NEW: same stroke as the bar */
+    border-top: 0; /* NEW: no top line, because the bar covers that part */
+    border-radius: 0 0 22px 22px; /* NEW: rounded bottom corners on the sheet */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06); /* NEW: same soft shadow as the bar */
   }
 }
 @media (min-width: 769px) and (max-width: 960px) {

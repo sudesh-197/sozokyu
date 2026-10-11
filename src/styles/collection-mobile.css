@@ -384,7 +384,6 @@
     color: #999;
   }
 
-  /* no footer on phones */
   /* no footer on the Collection page on phones (the floating bar sits there); every other page keeps it */
   .page:has(.mbar) .footer {
     display: none;
@@ -396,13 +395,53 @@
     animation: none;
   }
 }
-/* ---------- Filter sheet open: keep the floating Sort / Color / Price / Filter bar visible ---------- */
+
+/* ---------- Filter Option sheet (phone): same floating card as the Sort sheet ---------- */
 @media (max-width: 768px) {
   .mbar__float {
     z-index: 1001; /* above the filter sheet (z-index 1000) and its dark backdrop */
   }
+
+  /* NEW: 16px side margins like the floating bar; the card's bottom edge lines up with the bar's bottom edge */
+  .filter-sheet__body {
+    padding: 0 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+
   .filter-sheet__panel {
-    /* the sheet's content ends above the bar instead of hiding behind it (bar = 50px + 16px from the bottom) */
-    padding-bottom: calc(32px + 66px + env(safe-area-inset-bottom, 0px));
+    border-radius: 24px; /* CHANGED: was 30px 30px 0 0 -> all 4 corners, same as the Sort card */
+    padding: 20px 16px 62px; /* CHANGED: was 28px 20px calc(32px + 66px + safe-area).
+                                62px bottom = the 50px floating bar over the card + 12px breathing room */
+    animation: fsheet-up 0.2s ease-out; /* CHANGED: was sheet-up 0.35s (slid from the screen bottom);
+                                           now it grows upward from the bar, like Sort */
+  }
+
+  /* NEW: starts as just the 50px bar height and grows upward (same idea as mbar-bg-up) */
+  @keyframes fsheet-up {
+    from {
+      clip-path: inset(calc(100% - 50px) 0 0 0 round 24px);
+    }
+    to {
+      clip-path: inset(0 0 0 0 round 24px);
+    }
+  }
+
+  /* tighter spacing inside the sheet */
+  .filter-sheet .sidebar {
+    gap: 20px; /* was 34px */
+  }
+  .filter-sheet .sidebar__sections {
+    gap: 20px; /* was 32px */
+  }
+  .filter-sheet .quick-links {
+    gap: 10px; /* was 15px */
+  }
+  .filter-sheet .filter-group {
+    gap: 10px; /* was 16px */
+  }
+  .filter-sheet .filter-group__list {
+    gap: 8px; /* was 12px */
+  }
+  .filter-sheet__close {
+    margin-bottom: 4px; /* was 12px */
   }
 }

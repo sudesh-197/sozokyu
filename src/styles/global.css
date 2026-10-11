@@ -3870,13 +3870,9 @@ a {
     display: block;
     position: fixed;
     inset: 0;
-    z-index: -1; /* behind the search bar and its suggestion box */
+    z-index: -1;
     background: rgba(17, 17, 17, 0.55);
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
-  }
-  /* brighter search bar + list on the dimmed page */
-  .search--mobile {
-    background: #fff;
   }
 }
