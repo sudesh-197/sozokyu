@@ -360,7 +360,7 @@
   .feature__head-title {
     font-size: 20px;
     line-height: normal;
-    font-weight: 500;
+    font-weight: 600;
   }
   .feature__head-sub {
     font-size: 12px;
@@ -826,4 +826,83 @@
 /* footer stays at the bottom of the window on short pages (e.g. "no items found") */
 .page > main {
   flex: 1 0 auto;
+}
+/* ---------- collection: filters and products scroll separately (desktop / tablet) ---------- */
+@media (min-width: 769px) {
+  .content__row {
+    height: calc(100vh - 300px); /* viewport minus header, banner, breadcrumb */
+    min-height: 480px;
+    align-items: stretch;
+  }
+  .sidebar,
+  .results {
+    height: 100%;
+    overflow-y: auto; /* each side gets its own scroll bar */
+    scrollbar-width: thin;
+  }
+  .sidebar {
+    position: static;
+    padding-right: 12px;
+  }
+  .results {
+    padding-right: 6px;
+  }
+  .toolbar {
+    /* count + sort stay visible while products scroll */
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--white);
+  }
+}
+
+/* ---------- phones: name and details on ONE line, "..." when too long ---------- */
+@media (max-width: 768px) {
+  .card .card__text {
+    min-width: 0;
+  }
+  .card .card__text h3,
+  .card .card__text p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    -webkit-line-clamp: unset;
+  }
+  .card .card__footer {
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+}
+/* ---------- collection: filters and products scroll separately (desktop / tablet) ---------- */
+@media (min-width: 769px) {
+  .content__row {
+    height: calc(100vh - 300px);
+    min-height: 480px;
+    align-items: stretch;
+  }
+  .sidebar,
+  .results {
+    height: 100%;
+    overflow-y: auto; /* scrolls, but the bar is hidden below */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* old Edge/IE */
+  }
+  .sidebar::-webkit-scrollbar,
+  .results::-webkit-scrollbar {
+    display: none; /* Chrome, Edge, Safari */
+  }
+  .sidebar {
+    position: static;
+    padding-right: 12px;
+  }
+  .results {
+    padding-right: 6px;
+  }
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--white);
+  }
 }

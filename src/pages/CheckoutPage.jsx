@@ -9,6 +9,7 @@ import "../styles/checkout.css";
 import {
   getAddresses,
   getDefaultAddress,
+  saveAddressIfNew,
   formatAddress,
   STATES,
 } from "../lib/addresses.js";
@@ -66,7 +67,12 @@ const Select = ({ value, onChange, options, label }) => (
         <option key={o}>{o}</option>
       ))}
     </select>
-    <ChevronDownIcon size={16} strokeWidth={2} className="co-chev" aria-hidden="true" />
+    <ChevronDownIcon
+      size={16}
+      strokeWidth={2}
+      className="co-chev"
+      aria-hidden="true"
+    />
   </div>
 );
 
@@ -179,6 +185,11 @@ export default function CheckoutPage() {
           city: f.city.trim(),
           pincode: f.pincode,
         };
+    // logged-in customer typed a new address -> remember it in Account > Saved Address.
+    // Guests are never asked to log in or save anything: their order goes through as usual.
+    if (getUser() && !chosen) {
+      saveAddressIfNew({ ...address, state: f.state, country: f.country });
+    }
     placeOrder(items, address); // save the order
     placedRef.current = true;
     clear(); // empty the cart

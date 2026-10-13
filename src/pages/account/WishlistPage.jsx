@@ -1,12 +1,30 @@
 import { Link } from "react-router-dom";
 import ProductGrid from "../../components/ProductGrid.jsx";
 import { MobileHead } from "../../components/account/BackLink.jsx";
-import { allProducts } from "../../data/products.js";
+import { allProducts, getProduct, withLocalMeta } from "../../data/products.js";
 import { useWishlist } from "../../lib/wishlist.js";
+import useRemote from "../../hooks/useRemote.js";
+import { api } from "../../api/client.js";
 
 export default function WishlistPage() {
   const { ids } = useWishlist();
-  const list = allProducts.filter((p) => ids.includes(String(p.id)));
+
+  // shows the bundled data at once, then swaps in the latest backend data
+  const bundled = allProducts.filter((p) => ids.includes(String(p.id)));
+  const list = useRemote(
+    () =>
+      Promise.all(
+        ids.map((id) =>
+          api
+            .product(id)
+            .then(withLocalMeta)
+            .catch(() => getProduct(id)),
+        ),
+      ).then((items) => items.filter(Boolean)),
+    bundled,
+    [ids.join(",")],
+  );
+
   return (
     <div className="addr">
       {/* phones only: back arrow + title (the pill row is hidden on phones) */}

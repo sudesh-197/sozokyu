@@ -3895,3 +3895,9 @@ a {
     backdrop-filter: blur(4px);
   }
 }
+.grid .card {
+  padding: 2px 2px 12px; /* image 2px from the card edge, 12px below the text */
+}
+.grid .card .card__media {
+  border-radius: 16px; /* optional: same corner roundness as the home card */
+}
