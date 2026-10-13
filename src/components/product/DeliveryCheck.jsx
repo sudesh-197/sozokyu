@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { api } from '../../api/client.js';
-import { createIcon } from '../Icons.jsx';
-
-const WalletIcon = createIcon(<><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h14v12H5a2 2 0 0 1-2-2V5" /><circle cx="16" cy="14" r="1" /></>);
-const TruckIcon = createIcon(<><path d="M2 5h12v11H2zM14 9h4l4 4v3h-8z" /><circle cx="7" cy="18" r="2" /><circle cx="17" cy="18" r="2" /></>);
+import { WalletIcon, TruckDeliveryIcon } from '../Icons.jsx';
 
 // used only when the backend can't be reached
 const localEstimate = () => {
@@ -49,9 +46,9 @@ export default function DeliveryCheck() {
         {status === 'ok' && info && (
           <div className="delivery__info">
             {typeof info.cashOnDelivery === 'boolean' && (
-              <p><WalletIcon /> {info.cashOnDelivery ? 'Cash on delivery is available' : 'Cash on delivery is not available'}</p>
+              <p><WalletIcon size={16} /> {info.cashOnDelivery ? 'Cash on delivery is available' : 'Cash on delivery is not available'}</p>
             )}
-            <p><TruckIcon /> Estimated Delivery by {info.estimatedLabel}{info.approximate ? ' (approx.)' : ''}</p>
+            <p><TruckDeliveryIcon size={16} /> Estimated Delivery by {info.estimatedLabel}{info.approximate ? ' (approx.)' : ''}</p>
           </div>
         )}
       </div>

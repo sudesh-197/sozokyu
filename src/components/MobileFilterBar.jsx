@@ -1,40 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { SORT_OPTIONS } from "../lib/catalog.js";
 import { colors, prices } from "../data/filters.js";
-import { createIcon, CheckIcon } from "./Icons.jsx";
+import { CheckIcon, SortIcon as SortSvg, PaletteIcon as PaletteSvg, WalletIcon as WalletSvg, FilterIcon as FilterSvg } from "./Icons.jsx";
 import useEscapeKey from "../hooks/useEscapeKey.js";
 
-/* 15px line icons used by the bar (Figma: sort-by-down-02, palette, wallet-01, filter-horizontal) */
-const barIcon = (paths) =>
-  createIcon(paths, 15, { stroke: "#000", "aria-hidden": true });
-const SortIcon = barIcon(
-  <>
-    <path d="M4 6h10M4 12h7M4 18h4" />
-    <path d="M18 5v14M14.5 15.5L18 19l3.5-3.5" />
-  </>,
-);
-const PaletteIcon = barIcon(
-  <>
-    <path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-.9 2-1.8 0-1.1-.9-1.5-.9-2.5 0-1 .8-1.7 1.8-1.7H17a4 4 0 0 0 4-4c0-4-4-8-9-8z" />
-    <circle cx="7.5" cy="11.5" r="1" />
-    <circle cx="10.5" cy="7.5" r="1" />
-    <circle cx="15" cy="8" r="1" />
-  </>,
-);
-const WalletIcon = barIcon(
-  <>
-    <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H18a2 2 0 0 1 2 2v1" />
-    <path d="M4 7.5v9A2.5 2.5 0 0 0 6.5 19H19a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1H6.5A2.5 2.5 0 0 1 4 7.5z" />
-    <circle cx="16" cy="13.5" r="1" />
-  </>,
-);
-const FilterHorizontalIcon = barIcon(
-  <>
-    <path d="M3 7h9M18 7h3M3 17h3M12 17h9" />
-    <circle cx="15" cy="7" r="2.5" />
-    <circle cx="9" cy="17" r="2.5" />
-  </>,
-);
+/* 15px bar icons come from src/assets/icons (sort, palette, wallet, filter) */
+const SortIcon = () => <SortSvg color="#000" aria-hidden />;
+const PaletteIcon = () => <PaletteSvg color="#000" aria-hidden />;
+const WalletIcon = () => <WalletSvg color="#000" aria-hidden />;
+const FilterHorizontalIcon = () => <FilterSvg color="#000" aria-hidden />;
 
 // wording used in the phone design (the desktop dropdown keeps its own labels)
 const SORT_LABELS = {

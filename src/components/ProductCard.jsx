@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Pill from "./Pill.jsx";
 import IconButton from "./IconButton.jsx";
-import { BasketIcon, HeartIcon } from "./Icons.jsx";
+import { BagAddIcon, HeartIcon } from "./Icons.jsx";
 import { responsive } from "../lib/images.js";
 import { inr } from "../lib/format.js";
 import { useCart } from "../context/CartContext.jsx";
@@ -84,7 +84,7 @@ export default function ProductCard({ product, variant = "default", onAdd }) {
                 (onAdd || quickAdd)(product);
               }}
             >
-              <BasketIcon />
+              <BagAddIcon />
             </IconButton>
           </div>
         </div>

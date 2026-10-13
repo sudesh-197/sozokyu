@@ -6,6 +6,9 @@ import useEscapeKey from "../hooks/useEscapeKey.js";
 
 const MAX_SUGGESTIONS = 4;
 
+// words that rotate inside the empty search bar
+const ROTATING_WORDS = ["T Shirt", "Shirt", "Hoodie", "Jacket"];
+const ROTATE_EVERY_MS = 2200;
 // Up to 4 different product names that START with what was typed (nothing typed -> nothing).
 // To also match words inside a name ("hoodie" -> "Oversized Hoodie"), change the test to:
 //   name.split(' ').some((w) => w.startsWith(q))
@@ -47,6 +50,15 @@ export default function SearchBox({
   const ref = useRef(null);
   const listId = useId();
   const suggestions = getSuggestions(value);
+  const [wordIndex, setWordIndex] = useState(0);
+  useEffect(() => {
+    if (value) return undefined;
+    const id = setInterval(
+      () => setWordIndex((i) => (i + 1) % ROTATING_WORDS.length),
+      ROTATE_EVERY_MS,
+    );
+    return () => clearInterval(id);
+  }, [value]);
 
   // close on Escape / a tap outside the search
   useEscapeKey(() => setOpen(false), open);
@@ -129,7 +141,10 @@ export default function SearchBox({
       <div className="search__field">
         {!value && (
           <span className="search__text">
-            Search for <b>T Shirt</b>
+            Search for{" "}
+            <b className="search__word" key={ROTATING_WORDS[wordIndex]}>
+              {ROTATING_WORDS[wordIndex]}
+            </b>
           </span>
         )}
         <input

@@ -189,6 +189,9 @@
   .header--mobile {
     padding: 16px 16px 8px;
   }
+  .hide-mobile {
+    display: none;
+  }
 
   /* shared product card (matches the 390px design) */
   .card,
@@ -296,19 +299,20 @@
 
   .home-section {
     padding: 0 16px;
-    gap: 8px;
+    gap: 14px;
   }
   main > .home-section:last-child {
     padding-bottom: 0;
   }
   .section-heading {
-    gap: 4px;
+    gap: 8px;
     padding: 0 4px;
   }
   .section-heading h2 {
-    font-size: 16px;
+    font-size: 20px;
     letter-spacing: 0;
     white-space: normal;
+    font-weight: 500;
   }
   .section-heading p {
     font-size: 12px;
@@ -338,8 +342,9 @@
     width: 100%;
   }
   .feature__title {
-    font-size: 16px;
+    font-size: 20px;
     line-height: normal;
+    font-weight: 500;
   }
   .feature__sub {
     font-size: 12px;
@@ -348,13 +353,14 @@
     gap: 24px;
   }
   .feature__head {
-    width: 200px;
+    width: 300px;
     max-width: 100%;
     gap: 3px;
   }
   .feature__head-title {
-    font-size: 16px;
+    font-size: 20px;
     line-height: normal;
+    font-weight: 500;
   }
   .feature__head-sub {
     font-size: 12px;
@@ -390,28 +396,31 @@
   /* home product grid */
   .browse {
     padding: 0;
-    gap: 12px;
+    gap: 16px;
   }
   .browse__top {
     padding: 0 20px;
-    gap: 4px;
+    gap: 12px;
     max-width: none;
     width: 100%;
   }
   .browse__top h2 {
-    font-size: 16px;
+    font-size: 20px;
     letter-spacing: 0;
     white-space: normal;
+    font-weight: 500;
   }
   .cat-pills {
     gap: 8px;
     height: 32px;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
   .cat-pill {
     flex: 1 1 0;
     min-width: 0;
-    padding: 3px 10px;
-    font-size: 14px;
+    padding: 3px 20px;
+    font-size: 15px;
   }
   .browse__grid {
     grid-template-columns: repeat(2, 1fr);
