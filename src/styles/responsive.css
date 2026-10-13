@@ -344,8 +344,8 @@
   .feature__title {
     font-size: 20px;
     line-height: normal;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 550;
+    letter-spacing: 0.7px;
   }
   .feature__sub {
     font-size: 12px;
@@ -361,8 +361,8 @@
   .feature__head-title {
     font-size: 20px;
     line-height: normal;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 550;
+    letter-spacing: 0.7px;
   }
   .feature__head-sub {
     font-size: 12px;
