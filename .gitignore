@@ -20,4 +20,4 @@ __pycache__
 *.log
 
 
-.package-lock.json
+package-lock.json
