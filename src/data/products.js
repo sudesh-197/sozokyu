@@ -204,20 +204,20 @@ export const products = [
     price: 1299,
     detailPrice: 1299,
   }),
-  mk(22, A("d33593d8-bbd4-4e9e-b53a-f7f9cbe8fdde"), [267, 400], cover, {
+  mk(22, A("corduroy-overshirt-front"), [267, 400], cover, {
     name: "Corduroy Overshirt",
     description: "Relaxed corduroy overshirt with a soft textured finish.",
     price: 3299,
     detailPrice: 3299,
     gallery: [
-      A("a8a80f9b-6da6-46ce-9d34-444b17e4926a"),
-      A("3c1f6a52-8d41-4b7e-9a3e-5b0c7d2e1f10"),
-      A("7e9d2b84-1a6c-4f35-b8d0-2c4e6a9f3b71"),
+      A("corduroy-overshirt-front"),
+      A("corduroy-overshirt-side"),
+      A("corduroy-overshirt-back"),
     ],
     variants: [
-      A("a8a80f9b-6da6-46ce-9d34-444b17e4926a"),
-      A("b5a40e97-62d3-48c1-8f7a-0d1e3c5b9a28"),
-      A("d2c86f13-9b57-4e0a-a1c4-7f3b8e6d5042"),
+      A("corduroy-overshirt-front"),
+      A("corduroy-overshirt-rust"),
+      A("corduroy-overshirt-white"),
     ],
     availableSizes: ["S", "M", "L", "XL", "XXL"],
     relatedIds: [5, 1, 2, 21],
@@ -467,7 +467,12 @@ const MOBILE_CROP = {
   // box = the Figma image frame (centred in the 171 x 152 blue background), imgStyle = its crop
   5: {
     box: [240, 360],
-    imgStyle: { left: "-2.16%", top: "-2.46%", width: "100.09%", height: "100%" },
+    imgStyle: {
+      left: "-2.16%",
+      top: "-2.46%",
+      width: "100.09%",
+      height: "100%",
+    },
   },
   1: {
     box: [209, 279],
@@ -475,25 +480,50 @@ const MOBILE_CROP = {
   },
   2: {
     box: [180, 270],
-    imgStyle: { left: "-0.08%", top: "3.82%", width: "100.13%", height: "100%" },
+    imgStyle: {
+      left: "-0.08%",
+      top: "3.82%",
+      width: "100.13%",
+      height: "100%",
+    },
   },
   21: {
     box: [209, 279],
-    imgStyle: { left: "-0.07%", top: "2.51%", width: "100.15%", height: "100%" },
+    imgStyle: {
+      left: "-0.07%",
+      top: "2.51%",
+      width: "100.15%",
+      height: "100%",
+    },
   },
   22: { box: [216, 324], imgStyle: cover },
   6: { box: [235, 352], imgStyle: cover },
   3: {
     box: [204, 272],
-    imgStyle: { left: "-16.6%", top: "5.13%", width: "133.21%", height: "100%" },
+    imgStyle: {
+      left: "-16.6%",
+      top: "5.13%",
+      width: "133.21%",
+      height: "100%",
+    },
   },
   7: {
     box: [343, 457],
-    imgStyle: { left: "-3.13%", top: "2.28%", width: "100%", height: "112.69%" },
+    imgStyle: {
+      left: "-3.13%",
+      top: "2.28%",
+      width: "100%",
+      height: "112.69%",
+    },
   },
   8: {
     box: [279, 372],
-    imgStyle: { left: "-38.89%", top: "-3.93%", width: "177.78%", height: "100%" },
+    imgStyle: {
+      left: "-38.89%",
+      top: "-3.93%",
+      width: "177.78%",
+      height: "100%",
+    },
   },
   9: {
     box: [233, 310],
@@ -505,7 +535,12 @@ const MOBILE_CROP = {
   },
   12: {
     box: [235, 314],
-    imgStyle: { left: "-0.08%", top: "2.76%", width: "100%", height: "112.54%" },
+    imgStyle: {
+      left: "-0.08%",
+      top: "2.76%",
+      width: "100%",
+      height: "112.54%",
+    },
   },
 };
 products.forEach((p) => {

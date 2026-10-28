@@ -26,7 +26,7 @@ const figmaUrls = fs.existsSync(path.join(root, 'scripts/figma-assets.json'))
 const ids = new Set();
 for (const f of fs.readdirSync(path.join(root, 'src/data'))) {
   const text = fs.readFileSync(path.join(root, 'src/data', f), 'utf8');
-  for (const m of text.matchAll(/A\('([0-9a-f-]{36})'\)/g)) ids.add(m[1]);
+  for (const m of text.matchAll(/A\(['"]([A-Za-z0-9_-]+)['"]\)/g)) ids.add(m[1]);
 }
 
 const MAX_WIDTH = 1920; // plenty for the full-bleed heroes
